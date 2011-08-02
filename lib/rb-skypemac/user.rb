@@ -2,7 +2,7 @@ require 'rubygems'
 require 'appscript'
 include Appscript
 
-module SkypeMac  
+module SkypeMac
 
   # Represents Skype internal grouping of contacts; https://developer.skype.com/Docs/ApiDoc/GROUP_object
   class User
@@ -33,7 +33,7 @@ module SkypeMac
           User.skype_attr a, false
         end
       end
-    
+
       def User.skype_attr_accessor(*attr_sym)
         attr_sym.each do |a|
           User.skype_attr a, true
@@ -48,22 +48,25 @@ module SkypeMac
     skype_attr_reader :onlinestatus, :skypeout, :lastonlinetimestamp
     skype_attr_reader :can_leave_vm, :receivedauthrequest, :mood_text
     skype_attr_reader :rich_mood_text, :is_cf_active, :nrof_authed_buddies
-    
+
     #TODO: attr_reader :aliases, :timezone
-    
+
     skype_attr_accessor :buddystatus, :isblocked, :isauthorized, :speeddial, :displayname
 
     def initialize(handle)
       @handle = handle
     end
-    
+
     def name
-      if displayname != "": displayname
-      elsif fullname != "": fullname
-      else handle
+      if displayname != ""
+        displayname
+      elsif fullname != ""
+        fullname
+      else
+        handle
       end
     end
-    
+
     def <=>(user)
       name.upcase <=> user.name.upcase
     end
