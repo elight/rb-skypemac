@@ -4,7 +4,7 @@ The commit log LIES!  This gem was originally published to RubyForge 5/23/2007. 
 
 Migrated to github due to popular request.
 
-As of now, the test suite is *not* running cleanly!  You have been warned!
+***As of 8/1/11, the test suite is *not* running cleanly!  Apparently, this is because the outdated AppleScript API no longer supports interrogating for user attributes or for group lookups***
 
 README for rb-skypemac
 ======================
