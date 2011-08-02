@@ -1,0 +1,61 @@
+h1. rb skypemac
+
+h1. &#x2192; 'rb-skypemac'
+
+h2. What
+
+A simple Ruby interface to Skype for use with Mac OS X.
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install rb-skypemac</pre>
+
+h2. Demonstration of usage
+
+<pre>
+require 'rubygems'
+require 'rb-skypemac'
+include SkypeMac
+
+# Place a call to the 'echo123' user
+call = Skype.call "echo123" 
+
+# Disconnect a call
+call.hangup
+
+sleight42 = Skype.online_friends.find { |u| u.handle == "sleight42" }
+call = Skype.call sleight42
+Skype.hangup call # no one wants to talk to him anyway
+
+# Set your user status to away
+Iam.away
+
+# Set your user status to back
+Iam.online
+
+# Attempt to detect and answer a call -- still experimental!  
+# Sporadically crashes Skype 2.6.0.17
+loop do
+  begin
+    if not (calls = Skype.incoming_calls).empty?
+      call = Skype.answer calls.first
+      sleep 10
+      Skype.hangup call
+    end
+  rescue RuntimeError => e
+    puts e.message
+  end
+  puts "sleeping..."
+  sleep 1
+end
+</pre>
+
+h2. Licence
+
+This code is free to use under the terms of the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a>. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Evan Light":mailto:sleight42@gmail.com.
+
+Copyright 2007, Evan Light
