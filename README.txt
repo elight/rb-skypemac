@@ -1,3 +1,9 @@
+Note
+====
+The commit log LIES!  This gem was originally published to RubyForge 5/23/2007.  It was my first rubygem.  Aw..... how cute!
+
+Migrated to github due to popular request.
+
 README for rb-skypemac
 ======================
 
