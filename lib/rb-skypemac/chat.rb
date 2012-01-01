@@ -30,7 +30,7 @@ module SkypeMac
   
     # chat message to chat
     def chat_message(message)
-      r = Skype.send_ :command => "chatmessage #{@chat_id} #{@message}"
+      r = Skype.send_ :command => "chatmessage #{@chat_id} #{message}"
       raise SkypeError("Error occurred on chat_message: #{r.message}") if r =~ /ERROR/
       r
     end
