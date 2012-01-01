@@ -70,5 +70,9 @@ module SkypeMac
     def <=>(user)
       name.upcase <=> user.name.upcase
     end
+	
+    def chat
+      Chat.create @handle
+    end
   end
 end
