@@ -29,4 +29,9 @@ class TestUser < Test::Unit::TestCase
     prk166.isblocked = false
     assert prk166.isblocked == false
   end
+  
+  def test_chat
+    user = User.new "echo123"
+    assert user.chat.class == Chat, user.chat.class.to_s
+  end
 end
